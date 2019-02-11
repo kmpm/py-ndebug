@@ -1,7 +1,7 @@
 import time
-import pydebug
+import ndebug
 
-debug = pydebug.debug('examples:test2')
+debug = ndebug.debug('examples:test2')
 
 
 def hi_there():

@@ -1,10 +1,10 @@
 """Main of the 'examples' module
 run with ``python3 -m examples``
 """
-import pydebug
+import ndebug
 from . import test1, test2, test3
 
-debug = pydebug.debug('examples:main')
+debug = ndebug.debug('examples:main')
 
 print('tada')
 debug('start processing')

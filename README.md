@@ -1,11 +1,12 @@
-# pydebug
+# py-ndebug
 
-  Tiny python debugging utility modeled after visionmedia's node.js debug module and the python 3 print function
+  Tiny python debugging utility modeled after visionmedia's node.js debug module and the python 3 print function.
+  This is started off as a branch of https://github.com/mjgil/pydebug
 
 ## Installation
 
 ```
-$ python setup.py install
+$ pip install ndebug
 ```
 
 ## Usage
@@ -15,21 +16,21 @@ $ python setup.py install
 Example _test.py_:
 
 ```py
-import pydebug
+import ndebug
 import time
 
 # 
-# pydebug.debug(name)
+# ndebug.debug(name)
 #
 # once you have initialized the debug module you can call it as shown below
 #
 # debug(*objects, sep=' ', end='\n', file=sys.stderr, flush=False)
 #
 
-debug = pydebug.debug("test")
+debug = ndebug.debug("test")
 debug("hi there2")
 
-debug2 = pydebug.debug("test2")
+debug2 = ndebug.debug("test2")
 debug2("awesome")
 
 debug({"awesome": True}, True, 1, "test")
@@ -45,10 +46,10 @@ debug('should be seconds now')
  The __DEBUG__ environment variable is then used to enable these based on space or comma-delimited names. Here are some examples:
 
 ```
-$ DEBUG=* python test_pydebug.py
-$ DEBUG=test python test_pydebug.py
-$ DEBUG=test2 python test_pydebug.py
-$ DEBUG=test* python test_pydebug.py
+$ DEBUG=* python test_ndebug.py
+$ DEBUG=test python test_ndebug.py
+$ DEBUG=test2 python test_ndebug.py
+$ DEBUG=test* python test_ndebug.py
 ```
 
 ## Microsecond diff
@@ -59,8 +60,8 @@ $ DEBUG=test* python test_pydebug.py
   When the file is not a TTY, `to_utc_string()` is called which mimicks the default behavior of the Javascript `Date#toUTCString()` method used in the node.js debug module, making it more useful for logging the debug information as shown below
 
 ```
-$ DEBUG=* python test_pydebug.py 2>&1 | grep test
-$ DEBUG=* python test_pydebug.py 2>&1 | grep test2
+$ DEBUG=* python test_ndebug.py 2>&1 | grep test
+$ DEBUG=* python test_ndebug.py 2>&1 | grep test2
 ```
  
   
@@ -75,8 +76,8 @@ $ DEBUG=* python test_pydebug.py 2>&1 | grep test2
   You can also exclude specific debuggers by prefixing them with a "-" character or whitespace.  For example:
 
 ```
-$ DEBUG=test2,-test python test_pydebug.py
-$ DEBUG="test2 -test" python test_pydebug.py
+$ DEBUG=test2,-test python test_ndebug.py
+$ DEBUG="test2 -test" python test_ndebug.py
 ```
 
 ## License 

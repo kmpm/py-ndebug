@@ -1,6 +1,6 @@
-import pydebug
+import ndebug
 
-debug = pydebug.debug(__name__)
+debug = ndebug.debug(__name__)
 
 
 def hi_there():

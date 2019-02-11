@@ -1,9 +1,9 @@
 
-from pydebug import lib
+from ndebug import lib
 
 
 def test_humanize():
-    # from pydebug import lib
+    # from ndebug import lib
     ms = 1000
     sec = 1000 * ms
     min = 60 * sec
@@ -16,12 +16,12 @@ def test_humanize():
 
 
 def test_to_utc_string():
-    # from pydebug import lib
+    # from ndebug import lib
     assert lib.to_utc_string(1366560000) == 'Sun, 21 Apr 2013 16:00:00 GMT'
 
 
 def test_enable():
-    # from pydebug import lib
+    # from ndebug import lib
     assert not lib.enabled('test')
     lib.enable('test:a:b,test:c:*,-examples:*')
 
