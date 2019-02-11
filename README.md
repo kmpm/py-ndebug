@@ -11,7 +11,7 @@ $ pip install ndebug
 
 ## Usage
 
- With `debug` you simply invoke the exported function to generate your debug function, passing it a name which will determine if a noop function is returned, or custom decorated function that emulates the python 3 `print` function but, by default, prints to `sys.stderr`. A unique color is selected per-function for visibility.
+ With `create` you simply invoke the exported function to generate your debug function, passing it a name which will determine if a noop function is returned, or custom decorated function that emulates the python 3 `print` function but, by default, prints to `sys.stderr`. A unique color is selected per-function for visibility.
  
 Example _test.py_:
 
@@ -76,8 +76,7 @@ $ DEBUG=* python test_ndebug.py 2>&1 | grep test2
   You can also exclude specific debuggers by prefixing them with a "-" character or whitespace.  For example:
 
 ```
-$ DEBUG=test2,-test python test_ndebug.py
-$ DEBUG="test2 -test" python test_ndebug.py
+$ DEBUG=examples:*,-examples:test1 python -m examples
 ```
 
 ## License 
@@ -85,6 +84,7 @@ $ DEBUG="test2 -test" python test_ndebug.py
 The MIT License (MIT)
 
 Copyright (c) 2013 Malcom Gilbert
+Copyright (c) 2019 Peter Magnusson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

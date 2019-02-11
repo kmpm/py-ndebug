@@ -32,6 +32,7 @@ nosetests.xml
 
 # Virtualenv
 venv/
+.private
 
 # Translations
 *.mo

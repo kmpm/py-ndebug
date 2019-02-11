@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import re
+from setuptools import setup
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-# convert markdown to rst
-try:
-    import pypandoc
-    desc = pypandoc.convert('README.md', 'rst')
-except (IOError, ImportError):
-    desc = ''
 
 with open('ndebug/__init__.py', 'r') as fd:
     version = re.search(
@@ -27,9 +19,9 @@ with open('requirements/base.txt', 'r') as fd:
 setup(
     name='ndebug',
     version=version,
-    description=("Tiny python debugging utility modeled after visionmedia's ",
-                 "node.js debug module"),
-    long_description=desc,
+    description="Tiny python debugging utility like node.js debug module",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Peter Magnusson',
     author_email='peter@birchroad.se',
     url='https://github.com/kmpm/py-ndebug',
