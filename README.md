@@ -46,10 +46,10 @@ debug('should be seconds now')
  The __DEBUG__ environment variable is then used to enable these based on space or comma-delimited names. Here are some examples:
 
 ```
-$ DEBUG=* python test_ndebug.py
-$ DEBUG=test python test_ndebug.py
-$ DEBUG=test2 python test_ndebug.py
-$ DEBUG=test* python test_ndebug.py
+$ DEBUG=* python -m examples
+$ DEBUG=examples:test1 python -m examples
+$ DEBUG=examples:test2 python -m examples
+$ DEBUG=examples:* python -m examples
 ```
 
 ## Microsecond diff
@@ -60,8 +60,8 @@ $ DEBUG=test* python test_ndebug.py
   When the file is not a TTY, `to_utc_string()` is called which mimicks the default behavior of the Javascript `Date#toUTCString()` method used in the node.js debug module, making it more useful for logging the debug information as shown below
 
 ```
-$ DEBUG=* python test_ndebug.py 2>&1 | grep test
-$ DEBUG=* python test_ndebug.py 2>&1 | grep test2
+$ DEBUG=* python -m examples 2>&1 | grep test
+$ DEBUG=* python -m examples 2>&1 | grep test2
 ```
  
   
