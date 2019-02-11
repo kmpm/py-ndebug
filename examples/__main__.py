@@ -4,7 +4,7 @@ run with ``python3 -m examples``
 import ndebug
 from . import test1, test2, test3
 
-debug = ndebug.debug('examples:main')
+debug = ndebug.create('examples:main')
 
 print('tada')
 debug('start processing')

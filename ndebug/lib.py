@@ -8,7 +8,7 @@ from colorama import AnsiToWin32
 
 from . import env_helpers
 
-__all__ = ['debug', 'enable']
+__all__ = ['create', 'enable']
 sep_regex = "[\\s,]+"
 colors = [6, 2, 3, 4, 5, 1]
 
@@ -17,10 +17,17 @@ skips = []  # type: List[Pattern]
 prev = {}  # type: Dict[str, int]
 prevColor = 0
 
-inspect_ops = env_helpers.inspect_ops()
+options = env_helpers.options()
 debug_names = env_helpers.load()
-use_color = inspect_ops.get('color', True)
-hide_date = inspect_ops.get('hide_date', False)
+use_color = options.get('color', True)
+hide_date = options.get('hide_date', False)
+
+
+def enabled_func(value):
+    def decorator(func):
+        func.enabled = value
+        return func
+    return decorator
 
 
 def enable(namespaces):
@@ -41,7 +48,7 @@ def enable(namespaces):
             names.append(re.compile("^%s$" % name))
 
 
-def enabled(name):
+def enabled(name) -> bool:
     if name.endswith('*'):
         return True
     if any(r.match(name) for r in skips):
@@ -56,7 +63,7 @@ def color():
     return retval
 
 
-def humanize(us):
+def humanize(us) -> str:
     """Turn microseconds into human readable
 
     Parameters
@@ -85,15 +92,16 @@ def humanize(us):
     return "%sus" % us
 
 
+@enabled_func(value=False)
 def noop(*args, **kwargs):
     pass
 
 
-def to_utc_string(input_time):
+def to_utc_string(input_time) -> str:
     return time.strftime("%a, %d %b %Y %T GMT", time.gmtime(input_time))
 
 
-def debug(name):
+def create(name):
     """Creates a debug funtion for a specific namespace
 
     Parameters
@@ -108,7 +116,6 @@ def debug(name):
     """
     name = name.replace('.', ':')  # enables the use of __name__
     if not enabled(name):
-        noop.enabled = False
         return noop
 
     c = color()
@@ -120,7 +127,7 @@ def debug(name):
         prev[name] = curr
         return us
 
-    def colored(fmt, us):
+    def colored(fmt, us) -> str:
         """
         colors the output,
         mimicks pythons print() function
@@ -128,10 +135,11 @@ def debug(name):
         return "  \033[9{0}m{1} \033[3{0}m\033[90m{2}\033[3{0}m +{3}\033[0m" \
             .format(c, name, fmt, humanize(us))
 
-    def plain(fmt, us):
+    def plain(fmt, us) -> str:
         dt = '' if hide_date else to_utc_string(time.time())
         return "{} {} {} +{}".format(dt, name, fmt, humanize(us))
 
+    @enabled_func(True)
     def printable(*args, **kwargs):
         sep = kwargs.get('sep', ' ')
         end = kwargs.get('end', '\n')
@@ -150,7 +158,6 @@ def debug(name):
         if flush:
             file.flush()
 
-    printable.enabled = True
     return printable
 
 

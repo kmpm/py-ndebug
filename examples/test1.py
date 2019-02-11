@@ -1,6 +1,6 @@
 import ndebug
 
-debug = ndebug.debug('examples:test1')
+debug = ndebug.create('examples:test1')
 
 
 def hi_there():

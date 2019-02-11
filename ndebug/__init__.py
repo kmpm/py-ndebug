@@ -8,7 +8,7 @@ This module sets up the main interface for all of ndebug
 
 from __future__ import absolute_import
 
-from .lib import debug  # noqa: F401
+from .lib import create, enable  # noqa: F401
 
 __title__ = 'ndebug'
 __version__ = '0.0.1'

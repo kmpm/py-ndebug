@@ -1,30 +1,30 @@
 import os
 import re
+from typing import Any, Dict
 
 reTrue = re.compile(r'^(yes|on|true|enabled)$', re.IGNORECASE)
 reFalse = re.compile(r'^(no|off|false|disabled)$',  re.IGNORECASE)
 
 
-def inspect_ops():
+def options() -> dict:
     """Get options from environment variables
     Any env.variable prefixed with DEBUG_ will be included
     """
     # for key in os.environ.keys():
     keys = [key for key in os.environ.keys()
             if key.lower().startswith('debug_')]
-    obj = {}
+    obj = {}  # type: Dict[str, Any]
     for key in keys:
         prop = key[6:].lower()
-        val = os.environ.get(key)
+        val = os.environ.get(key, '')  # type: str
         if reTrue.match(val):
-            val = True
+            obj[prop] = True
         elif reFalse.match(val):
-            val = False
+            obj[prop] = False
         elif val == 'null':
-            val = None
+            obj[prop] = None
         else:
-            val = int(val, 10)
-        obj[prop] = val
+            obj[prop] = int(val, 10)
 
     return obj
 

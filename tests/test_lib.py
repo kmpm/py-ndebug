@@ -43,12 +43,12 @@ def test_color():
 def test_debug(capsys):
     lib.enable('test:a:b,test:c:*,-examples:*')
 
-    nope = lib.debug('test:a:nope')
+    nope = lib.create('test:a:nope')
     assert callable(nope)
     assert nope == lib.noop
     assert nope.enabled is False
 
-    yay = lib.debug('test:c:yay')
+    yay = lib.create('test:c:yay')
     assert callable(yay)
     assert yay.enabled is True
     yay('should be shown')

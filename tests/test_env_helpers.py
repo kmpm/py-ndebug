@@ -6,7 +6,7 @@ def test_inspect_ops(mocker):
                                      'DEBUG_DEPTH': '10',
                                      'DEBUG_SHOW_HIDDEN': 'enabled',
                                      'DEBUG_SOMETHING': 'null'})
-    actual = env_helpers.inspect_ops()
+    actual = env_helpers.options()
     assert actual == {'colors': False, 'depth': 10, 'show_hidden': True, 'something': None}
 
 

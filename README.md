@@ -20,17 +20,17 @@ import ndebug
 import time
 
 # 
-# ndebug.debug(name)
+# ndebug.create(name)
 #
 # once you have initialized the debug module you can call it as shown below
 #
 # debug(*objects, sep=' ', end='\n', file=sys.stderr, flush=False)
 #
 
-debug = ndebug.debug("test")
+debug = ndebug.create("test")
 debug("hi there2")
 
-debug2 = ndebug.debug("test2")
+debug2 = ndebug.create("test2")
 debug2("awesome")
 
 debug({"awesome": True}, True, 1, "test")
