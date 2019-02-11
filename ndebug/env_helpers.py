@@ -2,6 +2,10 @@ import os
 import re
 from typing import Any, Dict
 
+__author__ = 'Peter Magnusson'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2019 Peter Magnusson'
+
 reTrue = re.compile(r'^(yes|on|true|enabled)$', re.IGNORECASE)
 reFalse = re.compile(r'^(no|off|false|disabled)$',  re.IGNORECASE)
 

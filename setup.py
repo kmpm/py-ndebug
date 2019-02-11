@@ -22,7 +22,7 @@ setup(
     description="Tiny python debugging utility like node.js debug module",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    author='Peter Magnusson',
+    author='Malcom Gilbert, Peter Magnusson',
     author_email='peter@birchroad.se',
     url='https://github.com/kmpm/py-ndebug',
     license='MIT',
