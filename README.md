@@ -1,7 +1,7 @@
 # py-ndebug
+Tiny python debugging utility modeled after visionmedia's node.js debug module and the python 3 print function.
 
-  Tiny python debugging utility modeled after visionmedia's node.js debug module and the python 3 print function.
-  This is started off as a branch of https://github.com/mjgil/pydebug
+[![CircleCI](https://circleci.com/gh/kmpm/py-ndebug.svg?style=svg)](https://circleci.com/gh/kmpm/py-ndebug)
 
 ## Installation
 
