@@ -23,7 +23,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Malcom Gilbert, Peter Magnusson',
-    author_email='peter@birchroad.se',
+    author_email='peter@kmpm.se',
     url='https://github.com/kmpm/py-ndebug',
     license='MIT',
     packages=['ndebug'],

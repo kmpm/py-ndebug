@@ -11,7 +11,7 @@ from __future__ import absolute_import
 from .lib import create, enable  # noqa: F401
 
 __title__ = 'ndebug'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 # __build__ = 0x000010
 __author__ = 'Malcom Gilbert, Peter Magnusson'
 __license__ = 'MIT'
